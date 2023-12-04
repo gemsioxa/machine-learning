@@ -1,0 +1,38 @@
+body {
+  width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(circle, skyblue, steelblue);
+  color: #222;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input__plus {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  font-weight: bold;
+  border: 6px solid;
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.input__file {
+  display: none;
+}

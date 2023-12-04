@@ -1,0 +1,40 @@
+{
+  "name": "machine-learning",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Machine Learning with TensorFlow",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "gemsioxa",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mediapipe/selfie_segmentation": "0.1.1675465747",
+    "@tensorflow-models/body-segmentation": "1.0.1",
+    "@tensorflow/tfjs-backend-webgl": "4.2.0",
+    "@tensorflow/tfjs-converter": "4.2.0",
+    "@tensorflow/tfjs-core": "4.2.0",
+    "parcel-bundler": "^1.6.1",
+    "@tensorflow/tfjs": "^3.18.0",
+    "ml5": "^0.12.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "vite": "^5.0.0"
+  }
+}

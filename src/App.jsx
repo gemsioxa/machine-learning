@@ -5,6 +5,11 @@ import "@tensorflow/tfjs-converter";
 import * as bodySegmentation from "@tensorflow-models/body-segmentation";
 
 function App() {
+
+  const dropHandler = (e) => {
+    console.log(e);
+  };
+
   const startImageScan = async () => {
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext('2d');
@@ -34,27 +39,29 @@ function App() {
       segmentBodyParts: true
     });
 
-    const background = { r: 0, g: 0, b: 0, a: 0 };
-    const foregroundThreshold = 0.7;
+    const foreground = { r: 0, g: 0, b: 0, a: 0 };
+    const background = { r: 0, g: 0, b: 0, a: 255 };
+    const drawContour = true;
+    const foregroundThreshold = 0.6;
 
-    const coloredPartImage = await bodySegmentation.toColoredMask(
+    const binaryPartImage = await bodySegmentation.toBinaryMask(
       segmentation,
-      bodySegmentation.bodyPixMaskValueToRainbowColor,
+      // bodySegmentation.bodyPixMaskValueToRainbowColor,
+      foreground,
       background,
+      drawContour,
       foregroundThreshold
     );
 
     const opacity = 0.7;
-    const flipHorizontal = false;
-    const maskBlurAmount = 0;
+    const maskBlurAmount = 3;
 
     bodySegmentation.drawMask(
       canvas,
       image,
-      coloredPartImage,
+      binaryPartImage,
       opacity,
-      maskBlurAmount,
-      flipHorizontal
+      maskBlurAmount
     );
 
     image.src = '';
@@ -71,14 +78,17 @@ function App() {
 
   return (
     <>
-      <h1>Recognize people with TensorFlow</h1>
+      <h1>People detection with TensorFlow</h1>
+      <div className="prompt" id="imageResult">
+        Select file with people to recognize bodies
+      </div>
       <div className='input'>
-        <div className="imageResult" id="imageResult">
-          Select file with people to recognize bodies
-        </div>
-        <div className="imageInput">
-            <input type="file" id="fileInput" onInput={() => onFileInput()}/>
-        </div>
+          <label htmlFor='fileInput'>
+          <div className='input__plus' id='filePlus' onDragOver={dropHandler}>
+            +
+          </div>
+          </label>
+        <input type="file" id="fileInput" className='input__file' onInput={() => onFileInput()}/>
         <img className="uploadedImage" id="uploadedImage" />
       </div>
       <canvas id='canvas'></canvas>

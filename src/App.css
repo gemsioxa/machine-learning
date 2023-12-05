@@ -9,6 +9,10 @@ body {
   color: #222;
 }
 
+.prompt {
+  text-align: center;
+}
+
 .read-the-docs {
   color: #888;
 }
